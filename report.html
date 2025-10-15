@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heart Disease Report</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f4f9f9, #e0f7fa);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .report {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 700px;
+      width: 90%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .highlight {
+      color: #e74c3c;
+    }
+    .ok {
+      color: #27ae60;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #f0f8ff;
+    }
+    .advice {
+      margin-top: 25px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-left: 5px solid #3498db;
+    }
+    .home-link {
+      display: block;
+      margin-top: 25px;
+      text-align: center;
+    }
+    .home-link a {
+      text-decoration: none;
+      color: white;
+      background-color: #2ecc71;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+    .home-link a:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <div class="report">
+    <h1>🩺 Heart Disease Prediction Report</h1>
+
+    <div class="result">
+      Result: 
+      {% if "No" in diagnosis %}
+        <span class="ok">{{ diagnosis }}</span>
+      {% else %}
+        <span class="highlight">{{ diagnosis }}</span>
+      {% endif %}
+      <br>
+      Probability: {{ probability }}
+    </div>
+
+    <h3>Patient Details</h3>
+    <table>
+      <tr><th>Age</th><td>{{ age }}</td></tr>
+      <tr><th>Sex</th><td>{{ sex }}</td></tr>
+      <tr><th>Resting BP</th><td>{{ trestbps }}</td></tr>
+      <tr><th>Cholesterol</th><td>{{ chol }}</td></tr>
+      <tr><th>Max Heart Rate</th><td>{{ thalach }}</td></tr>
+      <tr><th>ST Depression</th><td>{{ oldpeak }}</td></tr>
+      <tr><th>Major Vessels</th><td>{{ ca }}</td></tr>
+      <tr><th>Chest Pain Type</th><td>{{ cp }}</td></tr>
+      <tr><th>Fasting BS >120</th><td>{{ fbs }}</td></tr>
+      <tr><th>Resting ECG</th><td>{{ restecg }}</td></tr>
+      <tr><th>Exercise Angina</th><td>{{ exang }}</td></tr>
+      <tr><th>Slope</th><td>{{ slope }}</td></tr>
+      <tr><th>Thal</th><td>{{ thal }}</td></tr>
+    </table>
+
+    <div class="advice">
+      <strong>Doctor’s Advice:</strong> {{ advice }}
+    </div>
+
+    <div class="home-link">
+      <a href="/">🔙 Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>
